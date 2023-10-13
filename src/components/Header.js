@@ -8,10 +8,46 @@ const Header = () => {
 			<Link to={'/'}>
 				<img className="h-full" src={headerLogo} alt="amazon-logo" />
 			</Link>
+			{/* deliver to geo */}
+
+			<Link
+				className="text-white flex items-center justify-center"
+				to={'/orders'}
+			>
+				<div className="flex items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-5 h-5"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+						/>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+						/>
+					</svg>
+					<div className="">
+						<p className="text-xs ">Deliver to</p>
+						<p className="text-sm font-medium">Egypt</p>
+					</div>
+				</div>
+			</Link>
+
 			{/* search bar */}
 			<div className="flex p-3 flex-1  ">
-				<input className=" border p-2 w-full focus:outline-none" type="text" />
-				<button className="p-2 bg-secondary-karamel">
+				<input
+					className=" border rounded-s p-2 w-full focus:outline-none"
+					type="text"
+				/>
+				<button className="p-2 bg-karamel-light hover:bg-karamel-dark rounded-e">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
@@ -49,7 +85,7 @@ const Header = () => {
 			</div>
 			{/* your basket */}
 			<div className="px-2 flex justify-center items-center  text-white ">
-				<Link className="flex items-center" to={'/shopingcart'}>
+				<Link className="flex items-center" to={'/checkout'}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
