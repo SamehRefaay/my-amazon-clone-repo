@@ -62,7 +62,7 @@ const Login = () => {
 					</div>
 				</div>
 				<Link
-					to={'/signup'}
+					to={'/register'}
 					className="inline-block w-full py-1 px-2 text-center text-sm border rounded-lg hover:bg-slate-50"
 				>
 					Create your Amazon account
