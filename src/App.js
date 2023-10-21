@@ -7,7 +7,7 @@ import { auth } from './firebase';
 import { useAuth } from './context/GlobalState';
 import Home from './components/Home';
 import './App.css';
-import Checkout from './components/Checkout';
+import ShopingCart from './components/ShopingCart';
 
 const App = () => {
 	const { dispatch } = useAuth();
@@ -25,7 +25,7 @@ const App = () => {
 				});
 			}
 		});
-	}, []);
+	});
 
 	return (
 		<div className="app">
@@ -42,11 +42,11 @@ const App = () => {
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 				<Route
-					path="/checkout"
+					path="/cart"
 					element={
 						<>
 							<Header />
-							<Checkout />
+							<ShopingCart />
 						</>
 					}
 				/>

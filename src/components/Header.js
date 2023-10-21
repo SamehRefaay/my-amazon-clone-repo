@@ -96,7 +96,7 @@ const Header = () => {
 			</div>
 			{/* your basket */}
 			<div className="px-2 flex justify-center items-center  text-white ">
-				<Link className="flex items-center" to={'/checkout'}>
+				<Link className="flex items-center" to={'/cart'}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
