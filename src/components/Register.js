@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import whiteLogo from '../images/amazon-white-logo.jpg';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
+
+	const register = e => {
+		console.log('from register');
+		e.preventDefault();
+
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(userCredential => {
+				// Signed up
+				// const user = userCredential.user;
+				// ...
+				navigate('/');
+			})
+			.catch(error => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorCode, errorMessage);
+				// ..
+			});
+	};
 	return (
 		<div className="flex flex-col justify-center items-center">
 			{/* logo */}
@@ -27,6 +52,8 @@ const Register = () => {
 						<input
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
+							value={email}
+							onChange={e => setEmail(e.target.value)}
 						/>
 						<span className="inline-block mt-4 text-sm font-medium">
 							Password
@@ -35,6 +62,8 @@ const Register = () => {
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
 							placeholder="At least 6 characters"
+							value={password}
+							onChange={e => setPassword(e.target.value)}
 						/>
 						<span className="inline-block mt-1 text-xs font-extralight">
 							Passwords must be at least 6 characters.
@@ -50,6 +79,8 @@ const Register = () => {
 							className="w-full mt-4 py-1 px-2 text-sm bg-yellow-400 hover:bg-yellow-500 border rounded-md"
 							type="submit"
 							value="Continue"
+							onClick={register}
+							to="/"
 						/>
 					</form>
 

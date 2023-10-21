@@ -10,9 +10,14 @@ const AppReducer = (state = initialState, action) => {
 				...state,
 				user: action.user,
 			};
+		case 'ADD_TO_CART':
+			return {
+				...state,
+				basket: [...state.basket, action.item],
+			};
 
 		default:
-			break;
+			return state;
 	}
 };
 

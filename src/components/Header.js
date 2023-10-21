@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import headerLogo from '../images/header-logo.png';
+import { useAuth } from '../context/GlobalState';
+import { auth } from '../firebase';
 
 const Header = () => {
+	const { user, basket } = useAuth();
+	console.log(basket);
+	const handleLogout = e => {
+		auth.signOut();
+	};
+
 	return (
 		<div className="header flex gap-1  bg-primary-blue px-4 h-14">
 			<Link to={'/'}>
@@ -63,10 +71,13 @@ const Header = () => {
 				</button>
 			</div>
 			{/* sign in */}
-			<div className="px-2 flex flex-col justify-center text-white ">
-				<p className="text-sm ">Hello Guest</p>
-				<Link to={'/login'}>
-					<h5 className="font-bold">Sign In</h5>
+			<div
+				className="px-2 flex flex-col justify-center text-white"
+				onClick={handleLogout}
+			>
+				<p className="text-sm ">Hello {user ? `${user.email}` : 'Guest'}</p>
+				<Link to={user ? '/' : '/login'}>
+					<h5 className="font-bold">{user ? 'Sign out' : 'Sign In'}</h5>
 				</Link>
 			</div>
 			{/* returns and orders */}
@@ -100,7 +111,8 @@ const Header = () => {
 							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
 						/>
 					</svg>
-					<span>2</span>
+
+					<span>{basket?.length}</span>
 				</Link>
 			</div>
 		</div>
