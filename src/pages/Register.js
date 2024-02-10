@@ -38,27 +38,39 @@ const Register = () => {
 				<div className="p-4 border rounded-lg">
 					<h1 className="text-3xl ">Create account</h1>
 					<form>
-						<span className="inline-block mt-4 text-sm font-medium">
+						<label
+							htmlFor="name"
+							className="inline-block mt-4 text-sm font-medium"
+						>
 							Your Name
-						</span>
+						</label>
 						<input
+							id="name"
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
 							placeholder="First and last name"
 						/>
-						<span className="inline-block mt-4 text-sm font-medium">
+						<label
+							htmlFor="email"
+							className="inline-block mt-4 text-sm font-medium"
+						>
 							Mobile number or email
-						</span>
+						</label>
 						<input
+							id="email"
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 						/>
-						<span className="inline-block mt-4 text-sm font-medium">
+						<labe
+							htmlFor="password"
+							className="inline-block mt-4 text-sm font-medium"
+						>
 							Password
-						</span>
+						</labe>
 						<input
+							id="password"
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
 							placeholder="At least 6 characters"
@@ -68,14 +80,18 @@ const Register = () => {
 						<span className="inline-block mt-1 text-xs font-extralight">
 							Passwords must be at least 6 characters.
 						</span>
-						<span className="inline-block mt-4 text-sm font-medium">
+						<label
+							htmlFor="confirmPassword"
+							className="inline-block mt-4 text-sm font-medium"
+						>
 							Re-enter password
-						</span>
+						</label>
 						<input
+							id="confirmPassword"
 							className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 							type="text"
 						/>
-						<input
+						<button
 							className="w-full mt-4 py-1 px-2 text-sm bg-yellow-400 hover:bg-yellow-500 border rounded-md"
 							type="submit"
 							value="Continue"

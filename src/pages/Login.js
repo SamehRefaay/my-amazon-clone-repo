@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import whiteLogo from '../images/amazon-white-logo.jpg';
 import { auth } from '../firebase';
-import Page from './Page';
+import Page from '../components/Page';
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -68,26 +68,34 @@ const Login = () => {
 							<h1 className="text-3xl ">Sign in</h1>
 							<form>
 								{/* email or phone */}
-								<span className="inline-block mt-4 text-sm font-medium">
+								<label
+									htmlFor="email"
+									className="inline-block mt-4 text-sm font-medium"
+								>
 									Email or mobile phone number
-								</span>
+								</label>
 								<input
+									id="email"
 									className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 									type="text"
 									value={email}
 									onChange={e => setEmail(e.target.value)}
 								/>
 								{/* password */}
-								<span className="inline-block mt-4 text-sm font-medium">
+								<label
+									htmlFor="password"
+									className="inline-block mt-4 text-sm font-medium"
+								>
 									Password
-								</span>
+								</label>
 								<input
+									id="password"
 									className="w-full text-sm mt-1 py-1 px-2 outline-2 outline-cyan-200 border rounded"
 									type="password"
 									value={password}
 									onChange={e => setPassword(e.target.value)}
 								/>
-								<input
+								<button
 									className="w-full mt-4 py-1 px-2 text-sm bg-yellow-400 hover:bg-yellow-500 border rounded-md"
 									type="submit"
 									value="Continue"

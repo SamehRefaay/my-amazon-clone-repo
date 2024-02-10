@@ -1,12 +1,11 @@
 import React from 'react';
-import CurrencyFormat from 'react-currency-format';
 import ReactStars from 'react-rating-stars-component';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/GlobalState';
+import ShortText from './ShortText';
+import CustomPriceText from './CustomPriceText';
 
 const Product = ({
 	span,
-	key,
 	id,
 	title,
 	description,
@@ -15,7 +14,6 @@ const Product = ({
 	price,
 	rating,
 }) => {
-	const navigate = useNavigate();
 	const { dispatch } = useAuth();
 
 	const addToCart = () => {
@@ -34,14 +32,10 @@ const Product = ({
 	};
 	return (
 		<div className={`p-4 border bg-white ${span}`}>
-			<p className="mt-4 text-sm">{description}</p>
-			<CurrencyFormat
-				className="text-2xl font-bold"
-				value={price}
-				displayType="text"
-				thousandSeparator={true}
-				prefix="$"
-			/>
+			<div className="mt-4 text-sm">
+				<ShortText text={description} maxlength={120} />
+			</div>
+			<CustomPriceText prefix={'$'} price={price} />
 			<div className="">
 				{' '}
 				<ReactStars
@@ -56,8 +50,12 @@ const Product = ({
 					activeColor="#FEBD69"
 				/>
 			</div>
-			<div className="h-72 flex justify-center">
-				<img className="h-full" src={image} alt="product-img" />
+			<div className="h-40 flex justify-center">
+				<img
+					className="h-full object-cover object-center"
+					src={image}
+					alt="product-img"
+				/>
 			</div>
 			<button
 				className="block py-2 px-6 mt-3 mx-auto rounded-md bg-karamel-dark"
